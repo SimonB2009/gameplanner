@@ -1,4 +1,6 @@
 using System;
+using System.Net;
+using System.Text;
 
 namespace Softplanner
 {   class Softplanner  {
@@ -40,11 +42,12 @@ namespace Softplanner
                Console.WriteLine("");
                Console.WriteLine("");
                Console.ForegroundColor = ConsoleColor.Green;
-               Console.WriteLine("  -------------------------- Show -----------------------------");
+               Console.WriteLine("  -------------------------- Updating -----------------------------");
                Console.ForegroundColor = ConsoleColor.White; 
                Console.WriteLine("");
                Console.WriteLine("");
-               show();
+               Console.ForegroundColor = ConsoleColor.Green;
+               load();
             } else {
                Console.WriteLine("");
                Console.WriteLine("");
@@ -57,8 +60,36 @@ namespace Softplanner
 
          }
 
-         static void show() {
+         static void load() {
+            // Create web client simulating IE6.
+            using (WebClient client = new WebClient())
+            {
+            client.Headers["User-Agent"] = "Mozilla/4.0 (Compatible; Windows NT 5.1; MSIE 6.0)";
+            
+            // Download data.games
+            byte[] arr = client.DownloadData("https://play.google.com/store/games");
 
+            string str = Encoding.Default.GetString(arr);
+            int index = str.IndexOf("Stumble Guys");
+            Console.WriteLine(index);
+            // Write values.
+         
+            //Console.WriteLine(str);
+
+            show();
+            }
+         }
+
+         static void show() {
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("  -------------------------- Show -----------------------------");
+            Console.WriteLine("");
+            Console.WriteLine("");
          }
      }
 }
