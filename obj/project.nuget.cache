@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "S8/BlAKPHoQmeBhifuv5no7Y46msOp/DXGnNLYxleV/WJS1v7VRWJ6SOqpADm7sve6Oj/sTEgbx5WN0WAL/Qgg==",
+  "dgSpecHash": "yeJXWp4TYfTM3ME5weg2KfBcUBZA/4iyN1yFJ2Xyl6vrWgUIQ+Rl3FWQpfZncwzaIG1nG3r3dGcu8uTHTlba2Q==",
   "success": true,
-  "projectFilePath": "/home/simon/Projects/Console/gameplanner/softplanner.csproj",
+  "projectFilePath": "/home/simon/Projects/Console/proj-overview/softplanner.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

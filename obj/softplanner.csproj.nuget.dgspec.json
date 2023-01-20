@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/simon/Projects/Console/gameplanner/softplanner.csproj": {}
+    "/home/simon/Projects/Console/proj-overview/softplanner.csproj": {}
   },
   "projects": {
-    "/home/simon/Projects/Console/gameplanner/softplanner.csproj": {
+    "/home/simon/Projects/Console/proj-overview/softplanner.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/simon/Projects/Console/gameplanner/softplanner.csproj",
+        "projectUniqueName": "/home/simon/Projects/Console/proj-overview/softplanner.csproj",
         "projectName": "softplanner",
-        "projectPath": "/home/simon/Projects/Console/gameplanner/softplanner.csproj",
+        "projectPath": "/home/simon/Projects/Console/proj-overview/softplanner.csproj",
         "packagesPath": "/home/simon/.nuget/packages/",
-        "outputPath": "/home/simon/Projects/Console/gameplanner/obj/",
+        "outputPath": "/home/simon/Projects/Console/proj-overview/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/simon/.nuget/NuGet/NuGet.Config"

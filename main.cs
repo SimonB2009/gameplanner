@@ -160,6 +160,7 @@ namespace Softplanner
             Console.ForegroundColor = ConsoleColor.Blue;
             
             if (Console.ReadLine() == "yes") {
+               save();
                return;
             } else {
                Console.WriteLine("");
@@ -171,6 +172,21 @@ namespace Softplanner
                start();
             }
             
+         }
+
+         
+         static bool save() { // save and return "true" if it worked else: "false"
+            int test1 = 1;
+            int test2 = 2;
+            if (test1 == test2) { //just for testing.
+               return true;
+            } else {
+               Console.WriteLine("");
+               Console.WriteLine("");
+               Console.ForegroundColor = ConsoleColor.Red;
+               Console.Write("      This didn t worked! Please try again.");
+               return false;
+            }
          }
      }
 }
