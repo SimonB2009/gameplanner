@@ -84,35 +84,36 @@ namespace Softplanner
          }
 
          static void create() {
+            string[] test = {"","","","","",""};
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      Typ :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            string typ = Console.ReadLine();
+            test[0] = Console.ReadLine();
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      Name :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            string name = Console.ReadLine();
+            test[1] = Console.ReadLine();;
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      from - to :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            string fromto = Console.ReadLine();
+            test[2] = Console.ReadLine();
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      Programmer :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            string programmer = Console.ReadLine();
+            test[3] = Console.ReadLine();
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      Discription :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            string discription = Console.ReadLine();
+            test[4] = Console.ReadLine();
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      on GitHub (yes / no) :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            string github = Console.ReadLine();
+            test[5] = Console.ReadLine();
             Console.WriteLine("");
             Console.WriteLine("");
 
@@ -131,7 +132,7 @@ namespace Softplanner
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      Typ :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(typ);;
+            //Console.WriteLine(typ);;
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      Discription :  ");
