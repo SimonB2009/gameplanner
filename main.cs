@@ -6,13 +6,21 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Softplanner
-{   
+{  
+   public class Proj 
+   {
+      private string name;
+      public Proj(string name, string typ, string github, string programmer, string discription, string fromto) {
+          this.name = name;
+      }
+   } 
    
    
-   class Softplanner  {
+   public class Softplanner {
 
-         static string action;
+         static string action = "";
          static bool restart = false;
+         static List<Proj> projects = new List<Proj> {};
          static void Main(string[] args) {
             load();
             start();
@@ -88,36 +96,35 @@ namespace Softplanner
          }
 
          static void create() {
-            string[] test = {"","","","","",""};
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      Typ :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            test[0] = Console.ReadLine();
+            string typ = Console.ReadLine();
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      Name :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            test[1] = Console.ReadLine();;
+            string name = Console.ReadLine();;
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      from - to :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            test[2] = Console.ReadLine();
+            string fromto = Console.ReadLine();
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      Programmer :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            test[3] = Console.ReadLine();
+            string programmer = Console.ReadLine();
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      Discription :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            test[4] = Console.ReadLine();
+            string discription = Console.ReadLine();
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      on GitHub (yes / no) :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            test[5] = Console.ReadLine();
+            string github = Console.ReadLine();
             Console.WriteLine("");
             Console.WriteLine("");
 
@@ -131,32 +138,32 @@ namespace Softplanner
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      Name :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(test[1]);
+            Console.WriteLine(name);
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      Typ :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(test[0]);
+            Console.WriteLine(typ);
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      Discription :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(test[4]);
+            Console.WriteLine(discription);
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      Programmer :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(test[3]);
+            Console.WriteLine(programmer);
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      from - to :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(test[2]);
+            Console.WriteLine(fromto);
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      on GitHub (yes / no) :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(test[5]);
+            Console.WriteLine(github);
 
             Console.WriteLine ("");
             Console.WriteLine ("");
@@ -165,8 +172,11 @@ namespace Softplanner
             Console.ForegroundColor = ConsoleColor.Blue;
             
             if (Console.ReadLine() == "yes") {
-               
-               if (save() == false) {
+               Proj p = new Proj(name,typ,github,programmer,discription,fromto);
+               projects.Add(p);
+
+               bool test = true;
+               if (test == false) {
                   restart = true;                                             //TODO
                   start();
                }
@@ -183,25 +193,6 @@ namespace Softplanner
             
          }
 
-         
-         static bool save() { // save and return "true" if it worked else: "false"
-            int test1 = 1;
-            int test2 = 2;
-            try (test1 == test2) { //just for testing. //*try: saving    Console.WriteLine("speichern");
-                                                                        //stream = new FileStream("MyFile.bin", FileMode.Open, FileAccess.Write, FileShare.None);  
-                                                                        //formatter.Serialize(stream, scores);  
-                                                                        //stream.Close(); 
-               return true;
-            } 
-            
-            catch () {                                                                       //false
-               Console.WriteLine("");
-               Console.WriteLine("");
-               Console.ForegroundColor = ConsoleColor.Red;
-               Console.Write("      This didn t worked! Please try again.");
-               return false;
-            }
-         }
 
          static void load() {
            /* Stream stream;
