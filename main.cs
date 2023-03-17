@@ -10,8 +10,18 @@ namespace Softplanner
    public class Proj 
    {
       private string name;
+      private string typ;
+      private string github;
+      private string programmer;
+      private string discription;
+      private string fromto;
       public Proj(string name, string typ, string github, string programmer, string discription, string fromto) {
-          this.name = name;
+         this.name = name;
+         this.typ = typ;
+         this.github = github;
+         this.programmer = programmer;
+         this.discription = discription;
+         this.fromto = fromto;
       }
    } 
    
