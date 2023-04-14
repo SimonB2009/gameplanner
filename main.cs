@@ -5,8 +5,10 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
+
 namespace Softplanner
 {  
+   [Serializable()]
    public class Proj 
    {
       private string name;
@@ -22,6 +24,19 @@ namespace Softplanner
          this.programmer = programmer;
          this.discription = discription;
          this.fromto = fromto;
+
+         static void save () {
+            Stream stream;
+            IFormatter formatter = new BinaryFormatter(); 
+
+            try {
+                stream = new FileStream(@"MyFile.bin",FileMode.Open,FileAccess.Read);
+                
+                projects = (Proj[])formatter.Deserialize(stream);
+                stream.Close();
+            } catch(FileNotFoundException exception)
+           
+         }
       }
    } 
    
