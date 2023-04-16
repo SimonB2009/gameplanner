@@ -25,30 +25,19 @@ namespace Softplanner
          this.discription = discription;
          this.fromto = fromto;
 
-         static void save () {
-            Stream stream;
-            IFormatter formatter = new BinaryFormatter(); 
-
-            try {
-                stream = new FileStream(@"MyFile.bin",FileMode.Open,FileAccess.Read);
-                
-                projects = (Proj[])formatter.Deserialize(stream);
-                stream.Close();
-            } catch(FileNotFoundException exception)
-           
-         }
       }
-   } 
+   }        
    
    
    public class Softplanner {
 
          static string action = "";
          static bool restart = false;
-         static List<Proj> projects = new List<Proj> {};
+         public static List<Proj> projects = new List<Proj> {};
          static void Main(string[] args) {
             load();
             start();
+            save();
          }
 
          static void start() {
@@ -199,12 +188,7 @@ namespace Softplanner
             if (Console.ReadLine() == "yes") {
                Proj p = new Proj(name,typ,github,programmer,discription,fromto);
                projects.Add(p);
-
-               bool test = true;
-               if (test == false) {
-                  restart = true;                                             //TODO
-                  start();
-               }
+               
                return;
             } else {
                Console.WriteLine("");
@@ -220,22 +204,38 @@ namespace Softplanner
 
 
          static void load() {
-           /* Stream stream;
+           Stream stream;
 
             IFormatter formatter = new BinaryFormatter();  
             try {
-                stream = new FileStream(@"MyFile.bin",FileMode.Open,FileAccess.Read);
+                stream = new FileStream("MyFile.bin",FileMode.Open,FileAccess.Read);
                 
-                test = (test[])formatter.Deserialize(stream);
+                 projects = (List<Proj>)formatter.Deserialize(stream);
+                 Console.WriteLine("Du hast {0} Projekte",projects.Count);
+
                 stream.Close();
             } catch(FileNotFoundException exception)
-            {
-                for (int i=0; i<10; i++) {
-                    scores[i] = new Score();
-                }
+            {           
                 System.IO.FileStream fs = System.IO.File.Create("MyFile.bin");
                 fs.Close();
-            }*/
+            }
          }
-     }
-}
+
+      static void save () {
+                  Stream stream;
+                  IFormatter formatter = new BinaryFormatter(); 
+
+                  try {
+                     stream = new FileStream("MyFile.bin",FileMode.Open,FileAccess.Write);
+                     
+                     formatter.Serialize(stream,projects);
+                     stream.Close();
+                  } catch(FileNotFoundException exception) {
+                     Console.WriteLine("should never happen");
+                  }
+               
+               }
+            }
+         }
+          
+     
