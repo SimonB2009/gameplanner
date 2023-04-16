@@ -53,7 +53,7 @@ namespace Softplanner
            
             Console.WriteLine("");
             Console.WriteLine("");
-            Console.Write("      Action (show / new) :  ");
+            Console.Write("      Action (show / new / leave) :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
             action = Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
@@ -68,6 +68,10 @@ namespace Softplanner
             Console.ForegroundColor = ConsoleColor.Blue;
 
             if (Console.ReadLine() == "yes") {
+
+               if (action == "leave") {
+                  Environment.Exit(0);
+               }
 
                if (action == "show") {
                   Console.WriteLine("");
@@ -106,7 +110,16 @@ namespace Softplanner
          }
 
          static void show() {
-      
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("      Commands:");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("      giv <name> = give the project by name");
+            Console.WriteLine("      giv -A = give all projects");
+            Console.WriteLine("      leave = leave show");
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("      ⟫ ");
+            string command = Console.ReadLine();
          }
 
          static void create() {
