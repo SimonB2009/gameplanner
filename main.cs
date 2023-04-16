@@ -33,6 +33,8 @@ namespace Softplanner
 
          static string action = "";
          static bool restart = false;
+         static string command = "";
+         static string givname = "";
          public static List<Proj> projects = new List<Proj> {};
          static void Main(string[] args) {
             load();
@@ -119,7 +121,32 @@ namespace Softplanner
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      ⟫ ");
-            string command = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            if (Console.ReadKey().Key == ConsoleKey.G) {
+               if (Console.ReadKey().Key == ConsoleKey.I) if (Console.ReadKey().Key == ConsoleKey.V) {
+                  Console.ForegroundColor = ConsoleColor.White;
+                  givname = Console.ReadLine();
+                  if (givname == "-A") {
+                     givall();
+                  }
+               }
+            } else {
+               command = Console.ReadLine();
+            }
+
+            if (command == "leave") {
+               Console.WriteLine("");
+               Console.WriteLine("");
+               Console.ForegroundColor = ConsoleColor.Red;
+               Console.WriteLine("  -------------------------- Leaving Show -----------------------------");
+               Console.ForegroundColor = ConsoleColor.White;
+               restart = true;
+               start();
+            }
+         }
+
+         static void givall() {
+            
          }
 
          static void create() {
