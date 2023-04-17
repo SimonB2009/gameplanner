@@ -34,7 +34,7 @@ namespace Softplanner
          static string action = "";
          static bool restart = false;
          static string command = "";
-         static string givname = "";
+         static string givename = "";
          public static List<Proj> projects = new List<Proj> {};
          static void Main(string[] args) {
             load();
@@ -115,26 +115,26 @@ namespace Softplanner
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("      Commands:");
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine("      giv <name> = give the project by name");
-            Console.WriteLine("      giv -A = give all projects");
+            Console.WriteLine("      give <name> = give the project by name");
+            Console.WriteLine("      give -A = give all projects");
             Console.WriteLine("      leave = leave show");
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      ⟫ ");
             Console.ForegroundColor = ConsoleColor.Blue;
             if (Console.ReadKey().Key == ConsoleKey.G) {
-               if (Console.ReadKey().Key == ConsoleKey.I) if (Console.ReadKey().Key == ConsoleKey.V) {
+               if (Console.ReadKey().Key == ConsoleKey.I) if (Console.ReadKey().Key == ConsoleKey.V) if (Console.ReadKey().Key == ConsoleKey.E) {
                   Console.ForegroundColor = ConsoleColor.White;
-                  givname = Console.ReadLine();
-                  if (givname == "-A") {
-                     givall();
+                  givename = Console.ReadLine();
+                  if (givename == "-A") {
+                     giveall();
                   }
                }
             } else {
                command = Console.ReadLine();
             }
 
-            if (command == "leave") {
+            if (command == "eave") {
                Console.WriteLine("");
                Console.WriteLine("");
                Console.ForegroundColor = ConsoleColor.Red;
@@ -145,7 +145,7 @@ namespace Softplanner
             }
          }
 
-         static void givall() {
+         static void giveall() {
             
          }
 
