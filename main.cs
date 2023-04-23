@@ -11,19 +11,21 @@ namespace Softplanner
    [Serializable()]
    public class Proj 
    {
-      private string name;
-      private string typ;
-      private string github;
-      private string programmer;
-      private string discription;
-      private string fromto;
-      public Proj(string name, string typ, string github, string programmer, string discription, string fromto) {
+      public string name;
+      public string typ;
+      public string github;
+      public string programmer;
+      public string discription;
+      public string fromto;
+      public string language;
+      public Proj(string name, string typ, string github, string programmer, string discription, string fromto, string language) {
          this.name = name;
          this.typ = typ;
          this.github = github;
          this.programmer = programmer;
          this.discription = discription;
          this.fromto = fromto;
+         this.language = language;
 
       }
    }        
@@ -126,7 +128,7 @@ namespace Softplanner
                if (Console.ReadKey().Key == ConsoleKey.I) if (Console.ReadKey().Key == ConsoleKey.V) if (Console.ReadKey().Key == ConsoleKey.E) {
                   Console.ForegroundColor = ConsoleColor.White;
                   givename = Console.ReadLine();
-                  if (givename == "-A") {
+                  if (givename == " -A") {
                      giveall();
                   }
                }
@@ -146,7 +148,32 @@ namespace Softplanner
          }
 
          static void giveall() {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("");
+            Console.WriteLine("      ..........................................");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("      Name");
+            Console.Write("      Typ");
+            Console.Write("      Language");
+            Console.Write("      Programmer");
+            Console.Write("      Discription");
+            Console.Write("      From-To");
+            Console.WriteLine("      On GitHub");
+            Console.WriteLine("");
             
+            foreach (Proj p in projects) {
+               Console.ForegroundColor = ConsoleColor.Green;
+               Console.Write("      " + p.name + " :");
+               Console.ForegroundColor = ConsoleColor.White;
+               Console.Write("   " + p.typ);
+               Console.Write("   " + p.language);
+               Console.Write("   " + p.programmer);
+               Console.Write("   " + p.discription);
+               Console.Write("   " + p.fromto);
+               Console.WriteLine("   " + p.github);
+            }
          }
 
          static void create() {
@@ -159,6 +186,11 @@ namespace Softplanner
             Console.Write("      Name :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
             string name = Console.ReadLine();;
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("      Language :  ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            string language = Console.ReadLine();
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      from - to :  ");
@@ -199,6 +231,10 @@ namespace Softplanner
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(typ);
             Console.WriteLine("");
+            Console.Write("      Language :  ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(language);
+            Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      Discription :  ");
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -226,7 +262,7 @@ namespace Softplanner
             Console.ForegroundColor = ConsoleColor.Blue;
             
             if (Console.ReadLine() == "yes") {
-               Proj p = new Proj(name,typ,github,programmer,discription,fromto);
+               Proj p = new Proj(name,typ,github,programmer,discription,fromto,language);
                projects.Add(p);
                
                return;
@@ -274,8 +310,8 @@ namespace Softplanner
                      Console.WriteLine("should never happen");
                   }
                
-               }
-            }
-         }
+      }
+   }
+}
           
      
