@@ -37,6 +37,7 @@ namespace Softplanner
          static bool restart = false;
          static string command = "";
          static string givename = "";
+         static bool showrestart = false;
          public static List<Proj> projects = new List<Proj> {};
          static void Main(string[] args) {
             load();
@@ -86,6 +87,8 @@ namespace Softplanner
                   Console.WriteLine("");
                   Console.WriteLine("");
                   Console.ForegroundColor = ConsoleColor.Green;
+
+                  showrestart = false;
             
                   show();
                } else { //create
@@ -114,12 +117,16 @@ namespace Softplanner
          }
 
          static void show() {
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine("      Commands:");
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine("      give <name> = give the project by name");
-            Console.WriteLine("      give -A = give all projects");
-            Console.WriteLine("      leave = leave show");
+            if(showrestart == false) {
+               Console.ForegroundColor = ConsoleColor.Magenta;
+               Console.WriteLine("      Commands:");
+               Console.ForegroundColor = ConsoleColor.Magenta;
+               Console.WriteLine("      give <name> = give the project by name");
+               Console.WriteLine("      give -A = give all projects");
+               Console.WriteLine("      give <first letter> = give all projects with this first letter");
+               Console.WriteLine("      give <any letter/-s> = give all projects with this letter/-s");
+               Console.WriteLine("      leave = leave show");
+            }
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("      ⟫ ");
@@ -130,13 +137,18 @@ namespace Softplanner
                   givename = Console.ReadLine();
                   if (givename == " -A") {
                      giveall();
+                     showrestart = true;
+                     show();
+                  } else {
+                     givebyname(givename.Trim());
+                     showrestart = true;
+                     show();
                   }
                }
             } else {
                command = Console.ReadLine();
-            }
 
-            if (command == "eave") {
+               if (command == "eave") {
                Console.WriteLine("");
                Console.WriteLine("");
                Console.ForegroundColor = ConsoleColor.Red;
@@ -144,9 +156,33 @@ namespace Softplanner
                Console.ForegroundColor = ConsoleColor.White;
                restart = true;
                start();
+               } else {
+               Console.WriteLine("");
+               Console.ForegroundColor = ConsoleColor.Red;
+               Console.WriteLine("      ERROR - This Comand doesn t exist");
+               Console.WriteLine("");
+               Console.WriteLine("");
+               show();
+               }
             }
+
          }
 
+         static void givebyname(string name) {
+            foreach (Proj p in projects) {
+               if (p.name.IndexOf(name)  != -1) {
+                  Console.ForegroundColor = ConsoleColor.Green;
+                  Console.Write("      " + p.name + " :");
+                  Console.ForegroundColor = ConsoleColor.White;
+                  Console.Write("   " + p.typ);
+                  Console.Write("   " + p.language);
+                  Console.Write("   " + p.programmer);
+                  Console.Write("   " + p.discription);
+                  Console.Write("   " + p.fromto);
+                  Console.WriteLine("   " + p.github);
+               }
+            }
+         }
          static void giveall() {
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("");
@@ -154,13 +190,13 @@ namespace Softplanner
             Console.WriteLine("");
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("      Name");
-            Console.Write("      Typ");
-            Console.Write("      Language");
-            Console.Write("      Programmer");
-            Console.Write("      Discription");
-            Console.Write("      From-To");
-            Console.WriteLine("      On GitHub");
+            Console.Write("      Name ");
+            Console.Write("  -    Typ ");
+            Console.Write("  -    Language ");
+            Console.Write("  -    Programmer ");
+            Console.Write("  -    Discription ");
+            Console.Write("  -    From-To ");
+            Console.WriteLine("  -    On GitHub ");
             Console.WriteLine("");
             
             foreach (Proj p in projects) {
