@@ -171,6 +171,7 @@ namespace Softplanner
          static void givebyname(string name) {
             foreach (Proj p in projects) {
                if (p.name.IndexOf(name)  != -1) {
+                  Console.WriteLine("");
                   Console.ForegroundColor = ConsoleColor.Green;
                   Console.Write("      " + p.name + " :");
                   Console.ForegroundColor = ConsoleColor.White;
